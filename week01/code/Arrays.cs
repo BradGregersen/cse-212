@@ -13,7 +13,18 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        // Plan:
+        // - Need an array to hold 'length' multiples
+        // - Loop through and fill each spot with number * 1, number * 2, etc.
+        // - Since array index starts at 0, I'll multiply by (i + 1) to get the right multiple
+        // - Return the filled array
+
+        double[] multiples = new double[length];
+        for (int i = 0; i < length; i++)
+        {
+            multiples[i] = number * (i + 1);
+        }
+        return multiples;
     }
 
     /// <summary>
@@ -29,5 +40,19 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        // Plan:
+        // - To rotate right by 'amount', the last 'amount' elements need to move to the front
+        // - I can split the list at position (data.Count - amount)
+        // - Grab everything after that split (the part moving to front)
+        // - Grab everything before the split (the part moving to back)
+        // - Clear the list and add them back in the new order
+
+        int splitPoint = data.Count - amount;
+        List<int> rightPortion = data.GetRange(splitPoint, amount);
+        List<int> leftPortion = data.GetRange(0, splitPoint);
+        data.Clear();
+        data.AddRange(rightPortion);
+        data.AddRange(leftPortion);
     }
 }
